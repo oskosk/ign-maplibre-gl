@@ -42,6 +42,20 @@
 			<strong>Capa base IGN</strong>
 			<div id="layer-picker"></div>
 		</div>
-		<script type="module" src="/example/main.js"></script>
+
+		<!--
+			Import map: resuelve el specifier "maplibre-gl" a un build ESM desde
+			CDN, así index.html funciona como ESM nativo (sin build, p. ej. en
+			GitHub Pages). Vite lo ignora en dev/build: empaqueta maplibre-gl
+			desde node_modules por su cuenta.
+		-->
+		<script type="importmap">
+			{
+				"imports": {
+					"maplibre-gl": "https://cdn.jsdelivr.net/npm/maplibre-gl@4/+esm"
+				}
+			}
+		</script>
+		<script type="module" src="./example/main.js"></script>
 	</body>
 </html>

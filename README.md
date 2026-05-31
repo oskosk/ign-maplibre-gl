@@ -73,13 +73,38 @@ Para agregar más capas, editá [`src/layers.js`](./src/layers.js).
 
 ## Ejecutar la demo
 
+La demo funciona de dos maneras:
+
+**Sin build (ESM nativo).** `index.html` carga `maplibre-gl` desde un CDN mediante
+un *import map* y el resto vía módulos ES relativos, así que no necesita
+empaquetado. Podés servir la carpeta del repo con cualquier servidor estático
+(o publicarla directamente en **GitHub Pages**) y abrir `index.html`:
+
+```bash
+npx serve .        # o: python3 -m http.server
+```
+
+> Nota: abrir el archivo con `file://` no funciona por las reglas CORS de los
+> módulos ES — hace falta servirlo por HTTP.
+
+**Con Vite (dev server).** Para hot-reload durante el desarrollo:
+
 ```bash
 npm install
 npm run dev
 ```
 
-Esto inicia Vite, que sirve `index.html` y el ejemplo en
-[`example/main.js`](./example/main.js).
+Vite sirve `index.html` y el ejemplo en
+[`example/main.js`](./example/main.js); ignora el *import map* y resuelve
+`maplibre-gl` desde `node_modules`.
+
+`npm run build` genera la demo estática en `dist/`.
+
+### Publicar en GitHub Pages
+
+Activá GitHub Pages apuntando a la raíz del repo (rama `main`, carpeta `/`).
+Como `index.html` no depende de ningún build, GitHub Pages lo sirve tal cual.
+El archivo `.nojekyll` evita que Jekyll procese el sitio.
 
 ## Notas
 
