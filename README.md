@@ -122,4 +122,4 @@ atribución.
 
 ## Licencia
 
-MIT
+[MIT](./LICENSE) © oskosk
