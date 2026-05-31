@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ign-maplibre-gl — demostración</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css"
+		/>
+		<style>
+			html,
+			body {
+				margin: 0;
+				height: 100%;
+			}
+			#map {
+				position: absolute;
+				inset: 0;
+			}
+			.panel {
+				position: absolute;
+				z-index: 1;
+				top: 10px;
+				left: 10px;
+				background: #fff;
+				padding: 8px 10px;
+				border-radius: 6px;
+				font: 13px/1.4 system-ui, sans-serif;
+				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+			}
+			.panel label {
+				display: block;
+				margin: 2px 0;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<div class="panel">
+			<strong>Capa base IGN</strong>
+			<div id="layer-picker"></div>
+		</div>
+		<script type="module" src="/example/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+{
+	"name": "ign-maplibre-gl",
+	"version": "0.1.0",
+	"description": "MapLibre GL plugin to load Argentina's IGN (Instituto Geográfico Nacional) base layers (argenmap, etc.) from TMS.",
+	"type": "module",
+	"main": "./dist/ign-maplibre-gl.umd.cjs",
+	"module": "./dist/ign-maplibre-gl.js",
+	"exports": {
+		".": {
+			"import": "./dist/ign-maplibre-gl.js",
+			"require": "./dist/ign-maplibre-gl.umd.cjs"
+		}
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"build:lib": "vite build --config vite.lib.config.js",
+		"preview": "vite preview"
+	},
+	"keywords": [
+		"maplibre",
+		"maplibre-gl",
+		"ign",
+		"argentina",
+		"argenmap",
+		"tms",
+		"basemap",
+		"gis"
+	],
+	"author": "",
+	"license": "MIT",
+	"peerDependencies": {
+		"maplibre-gl": ">=3.0.0"
+	},
+	"devDependencies": {
+		"maplibre-gl": "^4.7.1",
+		"vite": "^5.4.0"
+	}
+}
