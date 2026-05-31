@@ -8,6 +8,8 @@ Es un helper liviano: `ign.source()` devuelve la especificación de un *source*
 raster de MapLibre e `ign.layer()` devuelve la especificación de un *layer*
 raster, así mantenés el control total del mapa.
 
+👉 **[Ver la demo en vivo](https://oskosk.github.io/ign-maplibre-gl/)** (GitHub Pages).
+
 ## Instalación
 
 ```bash
@@ -104,7 +106,9 @@ Vite sirve `index.html` y el ejemplo en
 
 Activá GitHub Pages apuntando a la raíz del repo (rama `main`, carpeta `/`).
 Como `index.html` no depende de ningún build, GitHub Pages lo sirve tal cual.
-El archivo `.nojekyll` evita que Jekyll procese el sitio.
+El archivo `.nojekyll` evita que Jekyll procese el sitio. La demo queda en:
+
+<https://oskosk.github.io/ign-maplibre-gl/>
 
 ## Notas
 

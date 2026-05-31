@@ -14,6 +14,59 @@
 				margin: 0;
 				height: 100%;
 			}
+			body {
+				display: flex;
+				font: 14px/1.5 system-ui, sans-serif;
+				color: #1a1a1a;
+			}
+
+			/* ---- Columna izquierda: documentación / snippet ---- */
+			.docs {
+				flex: 0 0 420px;
+				max-width: 45%;
+				box-sizing: border-box;
+				padding: 24px 28px;
+				overflow-y: auto;
+				border-right: 1px solid #e3e3e3;
+				background: #fafafa;
+			}
+			.docs h1 {
+				font-size: 20px;
+				margin: 0 0 4px;
+			}
+			.docs p {
+				margin: 0 0 16px;
+				color: #444;
+			}
+			.docs a {
+				color: #1565c0;
+			}
+			.docs h2 {
+				font-size: 13px;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				color: #666;
+				margin: 20px 0 8px;
+			}
+			.docs pre {
+				margin: 0;
+				padding: 14px 16px;
+				background: #1e1e2e;
+				color: #e4e4ef;
+				border-radius: 8px;
+				overflow-x: auto;
+				font: 12.5px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+			}
+			.docs code {
+				font-family: inherit;
+			}
+
+			/* ---- Columna derecha: mapa ---- */
+			.map-col {
+				position: relative;
+				flex: 1;
+				min-width: 0;
+			}
 			#map {
 				position: absolute;
 				inset: 0;
@@ -34,14 +87,69 @@
 				margin: 2px 0;
 				cursor: pointer;
 			}
+
+			/* En pantallas angostas, apilar verticalmente. */
+			@media (max-width: 720px) {
+				body {
+					flex-direction: column;
+				}
+				.docs {
+					flex: 0 0 auto;
+					max-width: none;
+					border-right: none;
+					border-bottom: 1px solid #e3e3e3;
+				}
+				.map-col {
+					flex: 1;
+					min-height: 300px;
+				}
+			}
 		</style>
 	</head>
 	<body>
-		<div id="map"></div>
-		<div class="panel">
-			<strong>Capa base IGN</strong>
-			<div id="layer-picker"></div>
-		</div>
+		<section class="docs">
+			<h1>ign-maplibre-gl</h1>
+			<p>
+				Capas base del
+				<a href="https://www.ign.gob.ar/" target="_blank" rel="noopener"
+					>IGN (Instituto Geográfico Nacional)</a
+				>
+				de Argentina para
+				<a href="https://maplibre.org/" target="_blank" rel="noopener"
+					>MapLibre GL JS</a
+				>. Código en
+				<a
+					href="https://github.com/oskosk/ign-maplibre-gl"
+					target="_blank"
+					rel="noopener"
+					>GitHub</a
+				>.
+			</p>
+
+			<h2>Cómo se usa</h2>
+			<pre><code>import maplibregl from 'maplibre-gl';
+import ign from 'ign-maplibre-gl';
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: { version: 8, sources: {}, layers: [] },
+  center: [-64, -38],
+  zoom: 4,
+});
+
+map.on('load', () =&gt; {
+  map.addSource('argenmap', ign.source('argenmap'));
+  map.addLayer(ign.layer('argenmap'));
+});</code></pre>
+		</section>
+
+		<section class="map-col">
+			<div id="map"></div>
+			<div class="panel">
+				<strong>Capa base IGN</strong>
+				<div id="layer-picker"></div>
+			</div>
+		</section>
 
 		<!--
 			Import map: resuelve el specifier "maplibre-gl" a un build ESM desde
