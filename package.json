@@ -1,6 +1,6 @@
 {
 	"name": "ign-maplibre-gl",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "MapLibre GL plugin to load Argentina's IGN (Instituto Geográfico Nacional) base layers (argenmap, etc.) from TMS.",
 	"type": "module",
 	"main": "./dist/ign-maplibre-gl.umd.cjs",
